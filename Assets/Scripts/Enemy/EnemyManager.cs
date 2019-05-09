@@ -57,12 +57,15 @@ public class EnemyManager : MonoBehaviour {
 
 		float distanceFromPrevious = spawnDistanceFromPlayer + (float)Random.Range(0, 5);
 
-		int spawnCount = Random.RandomRange(minSpawnCount, maxSpawnCount);
+		int spawnCount = Random.Range(minSpawnCount, maxSpawnCount);
 
 
 		for(int i = 0; i < spawnCount; i++) {
 
-			Vector3 position = new Vector3(spawnPoints[Random.Range(0, 2)], 0f, player.transform.position.z + distanceFromPrevious + i * 5f);
+			Vector3 position = new Vector3(spawnPoints[Random.Range(0, spawnPoints.Length - 1)], 
+										   0f, 
+										   player.transform.position.z + distanceFromPrevious + i * 5f);
+										   
 			SpawnEnemy(position);
 		}
 	}

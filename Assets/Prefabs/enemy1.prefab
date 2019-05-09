@@ -1817,10 +1817,10 @@ Light:
   serializedVersion: 9
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1.5
-  m_Range: 69.47
-  m_SpotAngle: 78.4
-  m_InnerSpotAngle: 60.757515
+  m_Intensity: 2.5
+  m_Range: 15
+  m_SpotAngle: 110
+  m_InnerSpotAngle: 1
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -1862,7 +1862,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 2.5350226e-38, z: 1.4e-44, w: 2.3510647e-38}
+  m_BoundingSphereOverride: {x: -1.7014118e+38, y: 0.41015625, z: 0.044921875, w: 7}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -2030,7 +2030,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 6.489658e-36, z: 1.4e-44, w: 2.3510647e-38}
+  m_BoundingSphereOverride: {x: 0, y: 2.5350226e-38, z: 1.4e-44, w: 2.3510647e-38}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -2480,7 +2480,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.4205e-41, y: 2.3510647e-38, z: 0, w: 2.3510647e-38}
+  m_BoundingSphereOverride: {x: 0, y: 2.3510647e-38, z: 0, w: 2.3510647e-38}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -2930,10 +2930,10 @@ Light:
   serializedVersion: 9
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1.5
-  m_Range: 69.47
-  m_SpotAngle: 78.4
-  m_InnerSpotAngle: 60.757515
+  m_Intensity: 2.5
+  m_Range: 15
+  m_SpotAngle: 110
+  m_InnerSpotAngle: 1
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -2975,7 +2975,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 6.489658e-36, z: 1.4e-44, w: 2.3510647e-38}
+  m_BoundingSphereOverride: {x: 0, y: 2.5350226e-38, z: 1.4e-44, w: 2.3510647e-38}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -4182,8 +4182,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.13, y: 1.76, z: 2.39}
-  m_Center: {x: 0, y: 0.93, z: -0.27}
+  m_Size: {x: 2.13, y: 1.928386, z: 2.39}
+  m_Center: {x: 0, y: 0.84580696, z: -0.26999998}
 --- !u!114 &114554695262747166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4204,6 +4204,7 @@ MonoBehaviour:
   destroyed: 0
   minSpeed: 3
   maxSpeed: 8
+  frontMinDistanceToOtherCar: 5
 --- !u!1 &1943098189889510
 GameObject:
   m_ObjectHideFlags: 0

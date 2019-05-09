@@ -7,32 +7,18 @@ public class Enemy : Car {
 	public float minSpeed = 3f;
 	public float maxSpeed = 8f;
 
+	public float frontMinDistanceToOtherCar = 5f;
+
 	override public void Awake() {
 
 		speed = Random.Range(minSpeed, maxSpeed);
 		base.Awake();
 	}
 
-	// Use this for initialization
-	void Start () {
-		
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-		base.Update();
-
-		
-	}
 
 	void FixedUpdate()
     {
-        Vector3 fwd = transform.TransformDirection(Vector3.forward);
-
-        if (Physics.Raycast(transform.position, fwd, 10))
-            Debug.Log("There is something in front of the object!");
+        SlowDownIfCarIsInFront();
     }
 
 	private void OnTriggerEnter(Collider other) {
@@ -44,5 +30,22 @@ public class Enemy : Car {
 		}
 
 		targetVelocity.z = enemy.targetVelocity.z * 0.9f;
+	}
+
+
+	private void SlowDownIfCarIsInFront() {
+
+		RaycastHit hit;
+
+        if (Physics.Raycast(transform.position, transform.TransformDirection(-Vector3.forward), out hit, frontMinDistanceToOtherCar))
+        {	
+			Enemy enemyObject = hit.collider.GetComponent<Enemy>();
+
+			if(enemyObject == null) {
+				return;
+			}
+
+            targetVelocity = enemyObject.targetVelocity;
+        }
 	}
 }
