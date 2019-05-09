@@ -12,6 +12,8 @@ public class UIManager : MonoBehaviour {
 
 	public GameObject joystickObject;
 
+	public Text finalScore;
+
 	public FixedJoystick joystick;
 
 	public bool isMobile = false;
@@ -39,11 +41,12 @@ public class UIManager : MonoBehaviour {
 
 	public void UpdateDistanceText(int distance) {
 
-		distanceText.text = "Distance: " + distance;
+		distanceText.text = "Distance: " + distance + "m";
 	}
 
 	public void ShowGameOver() {
 
+		finalScore.text = GameManager.instance.distance.ToString();
 		gameOverPanel.SetActive(true);
 	}
 }

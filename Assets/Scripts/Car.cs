@@ -15,7 +15,7 @@ public abstract class Car : MonoBehaviour {
 
 	private Vector3 currentVelocity = Vector3.zero;
 
-	public GameObject explosionPrefab;
+	public GameObject explosionEffect;
 	public bool destroyed = false;
 
 
@@ -53,9 +53,10 @@ public abstract class Car : MonoBehaviour {
 
 	public void Explode() {
 
-		GameObject explosion = Instantiate(explosionPrefab, transform.position, transform.rotation);
-		explosion.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
-		transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+		explosionEffect.transform.parent = transform.parent;
+		explosionEffect.transform.position = transform.position;
+		explosionEffect.SetActive(true);
+		gameObject.SetActive(false);
 		destroyed = true;
 	}
 }

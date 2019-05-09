@@ -10,49 +10,64 @@ public class MapManager : MonoBehaviour {
 	public GameObject player;
 	public float spawnOffset = 42.7f;
 
-	private List<GameObject> spawnedMapParts = new List<GameObject>();
+	public int startMapElementsCount = 2;
+
+	//private List<GameObject> spawnedMapParts = new List<GameObject>();
+
+	private Queue<GameObject> spawnedMapParts = new Queue<GameObject>();
 
 
 	void Start () {
 		
-		spawnedMapParts.Add(lastMapPart);
-		GenerateMapPart();
+		if(lastMapPart != null) {
+			spawnedMapParts.Enqueue(lastMapPart);
+		}
+		
+		GenerateStartMap();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
-		RemoveOldMapPart();
+
+		if(lastMapPart == null)
+			return;		
 
 		if(Vector3.Distance(player.transform.position, lastMapPart.transform.position) < spawnOffset) {
 
-			GenerateMapPart();
+			RespawnOldMapPart();
 		}
 	}
 
+	void GenerateStartMap() {
 
-	void GenerateMapPart() {
+		for(int i = 0; i < startMapElementsCount; i++) {
 
-		Vector3 position = lastMapPart.transform.position + new Vector3(0f, 0f, spawnOffset);
-		
-		GameObject randomPrefab = mapParts[Random.Range(0, mapParts.Count - 1)];
-		
-		lastMapPart = Instantiate(randomPrefab, position, Quaternion.identity);
-		spawnedMapParts.Add(lastMapPart);
+			Vector3 position = GetNextMapPosition();
+			
+			GameObject randomPrefab = mapParts[Random.Range(0, mapParts.Count - 1)];
+			
+			lastMapPart = Instantiate(randomPrefab, position, Quaternion.identity);
+			spawnedMapParts.Enqueue(lastMapPart);
+		}
 	}
 
-	void RemoveOldMapPart() {
+	
+
+	void RespawnOldMapPart() {
 
 		if(spawnedMapParts.Count == 0) {
 			return;
 		}
+	
+		GameObject mapToRespawn = spawnedMapParts.Dequeue();
 
-		GameObject mapToRemove = spawnedMapParts[0];
+		mapToRespawn.transform.position = GetNextMapPosition();
+		lastMapPart = mapToRespawn;
+		spawnedMapParts.Enqueue(mapToRespawn);
+	}
 
-		if(Vector3.Distance(player.transform.position, mapToRemove.transform.position) > spawnOffset) {
+	Vector3 GetNextMapPosition() {
 
-			spawnedMapParts.Remove(mapToRemove);
-			Destroy(mapToRemove);
-		}
+		return lastMapPart.transform.position + new Vector3(0f, 0f, spawnOffset);
 	}
 }

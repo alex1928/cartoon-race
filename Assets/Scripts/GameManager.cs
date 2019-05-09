@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour {
 	public static GameManager instance;
 	public GameObject player;
 
-	public float distance = 0f;
+	public int distance = 0;
 
 	public AudioClip music;
 
@@ -28,8 +28,8 @@ public class GameManager : MonoBehaviour {
 
 		if(player != null) {
 		
-			int playerDistance = (int)Mathf.Round(player.transform.position.z);
-			UIManager.instance.UpdateDistanceText(playerDistance);
+			distance = (int)Mathf.Round(player.transform.position.z);
+			UIManager.instance.UpdateDistanceText(distance);
 		}
 	}
 

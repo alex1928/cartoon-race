@@ -15,7 +15,7 @@ public class Player : Car {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	new void Update () {
 
 		base.Update();
 
@@ -47,12 +47,9 @@ public class Player : Car {
 		if(Application.platform == RuntimePlatform.IPhonePlayer) {
 
 			return UIManager.instance.joystick.Vertical;
-		} else {
-
-			return Input.GetAxis("Vertical");
 		}
 
-		return 0f;
+		return Input.GetAxis("Vertical");
 	}
 
 	private float GetDirectionAxis() {
@@ -60,12 +57,9 @@ public class Player : Car {
 		if(Application.platform == RuntimePlatform.IPhonePlayer) {
 
 			return UIManager.instance.joystick.Horizontal;
-		} else {
-
-			return Input.GetAxis("Horizontal");
 		}
-
-		return 0f;
+		
+		return Input.GetAxis("Horizontal");
 	}
 
 	
